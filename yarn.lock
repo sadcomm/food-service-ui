@@ -2082,20 +2082,6 @@
   resolved "https://ecor-nexus.satel.org/repository/npm/@ngtools/webpack/-/webpack-14.2.9.tgz#f8c7ac5a979d5077c44e24142115543667d367f5"
   integrity sha512-P2zgvsfSpN4BkNzZWnPKUVOzv3y/SUWdnx/nhAG5gsQkLBp0Vf2evwQnbPUKuCrbMpYd1V/5SHb48+0B6FbUtQ==
 
-"@ngx-formly/core@^6.0.2":
-  version "6.0.2"
-  resolved "https://ecor-nexus.satel.org/repository/npm/@ngx-formly/core/-/core-6.0.2.tgz#de3d9a6470c9177a8eb523470a0b587e493c47dd"
-  integrity sha512-DEqu+nea9RyeZjAE/HQx1eDwVsKlySh8X2wWF7fSHnF/4M7KtWQWFl0CW4fPAi58ohqacCVc/Z94jhYnxLt6ZA==
-  dependencies:
-    tslib "^2.0.0"
-
-"@ngx-formly/material@^6.0.2":
-  version "6.0.2"
-  resolved "https://ecor-nexus.satel.org/repository/npm/@ngx-formly/material/-/material-6.0.2.tgz#e53775d1a825b2d9440cd59425f21066a5320747"
-  integrity sha512-+FgwaK3urnXHWIJCBaWCII3iDgsucZvtULTdVxjV1XbTS9rVFJKNupQKxKuXO52L9mWWB+FgfnAYIuep2bYM9A==
-  dependencies:
-    tslib "^2.0.0"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://ecor-nexus.satel.org/repository/npm/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -5860,6 +5846,18 @@ pretty-bytes@^5.3.0:
   resolved "https://ecor-nexus.satel.org/repository/npm/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+primeicons@^6.0.1:
+  version "6.0.1"
+  resolved "https://ecor-nexus.satel.org/repository/npm/primeicons/-/primeicons-6.0.1.tgz#431fa7c79825934eefd62087d8e1faa6a9e376ad"
+  integrity sha512-KDeO94CbWI4pKsPnYpA1FPjo79EsY9I+M8ywoPBSf9XMXoe/0crjbUK7jcQEDHuc0ZMRIZsxH3TYLv4TUtHmAA==
+
+primeng@^14.2.1:
+  version "14.2.1"
+  resolved "https://ecor-nexus.satel.org/repository/npm/primeng/-/primeng-14.2.1.tgz#097cc3c9196e5d2c9d60930108a57117d5f5560d"
+  integrity sha512-T+0vWgEIzeubKQFOrKSHozlHgt7Mv0vp14X0PHNRkF1Xhu9Sj+umwNRPUn7swenJewS0Le7QELT7cgesLjUV6Q==
+  dependencies:
+    tslib "^2.3.0"
+
 proc-log@^2.0.0, proc-log@^2.0.1:
   version "2.0.1"
   resolved "https://ecor-nexus.satel.org/repository/npm/proc-log/-/proc-log-2.0.1.tgz#8f3f69a1f608de27878f91f5c688b225391cb685"
@@ -6765,7 +6763,7 @@ tslib@^1.9.0:
   resolved "https://ecor-nexus.satel.org/repository/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
+tslib@^2.1.0, tslib@^2.3.0:
   version "2.4.1"
   resolved "https://ecor-nexus.satel.org/repository/npm/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==

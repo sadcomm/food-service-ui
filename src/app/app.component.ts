@@ -3,7 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
+    <mat-sidenav
+      role="navigation"
+      class="sidenav-navigation"
+      mode="side"
+      opened="true"
+    >
       <mat-toolbar color="primary" class="sidenav-toolbar mat-elevation-z2">
         <div
           class="sidenav-toolbar-title-container"
@@ -30,14 +35,20 @@ import { Component } from '@angular/core';
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
-    <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+    <mat-sidenav-content role="main" class="sidenav-content">
+      <section class="sidenav-main-section">
+        <div class="mdc-layout-grid">
+          <router-outlet></router-outlet>
+        </div>
+      </section>
+    </mat-sidenav-content>
   </mat-sidenav-container>`,
   styles: [
     `
       .sidenav-container {
         height: 100%;
 
-        .sidenav {
+        .sidenav-navigation {
           width: 270px;
           user-select: none;
 
@@ -60,6 +71,21 @@ import { Component } from '@angular/core';
             padding-top: 0;
             mat-list-item {
               color: white;
+            }
+          }
+        }
+
+        .sidenav-content {
+          .sidenav-main-section {
+            -ms-flex: 1;
+            flex: 1;
+            width: 100%;
+            margin-top: 48px;
+            height: calc(100vh - 48px);
+            overflow-y: auto;
+            & > .mdc-layout-grid {
+              height: 100%;
+              padding: 0;
             }
           }
         }
