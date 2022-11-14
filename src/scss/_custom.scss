@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bg-primary {
+  background: $color-primary;
+}
+
+.sidenav-content {
+  margin-top: 48px;
+  width: 100%;
+  height: calc(100% - 48px);
+}

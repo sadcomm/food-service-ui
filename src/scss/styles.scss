@@ -1,0 +1,15 @@
+@use "@angular/material" as mat;
+
+@import "sass-material-colors";
+
+@import "@material/elevation/mdc-elevation";
+@import "@material/card/mdc-card";
+@import "@material/typography/mdc-typography";
+@import "@material/layout-grid/mdc-layout-grid";
+@import "@material/theme/_variables";
+@import "@material/theme/_color-palette";
+
+@import "_theme.scss";
+@import "_variables.scss";
+@import "_custom.scss";
+@import "_indents.scss";
