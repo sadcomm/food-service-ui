@@ -14,6 +14,20 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { OrdersComponent } from './views/orders/orders.component';
 
+import { Apollo, ApolloModule } from 'apollo-angular';
+import { ApolloLink, InMemoryCache } from '@apollo/client/core';
+import { HttpLink } from 'apollo-angular/http';
+import { environment } from 'src/environments/environment';
+import {
+  HttpClientModule,
+} from '@angular/common/http';
+
+const stateFeatureKey = 'fsStore';
+
+const middlewareLink = new ApolloLink((op, forward) =>
+  forward(op).map((response) => response)
+);
+
 const MATERIAL = [
   MatListModule,
   MatIconModule,
@@ -31,8 +45,21 @@ const MATERIAL = [
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    ApolloModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    apollo.createNamed(stateFeatureKey, {
+      link: middlewareLink.concat(
+        httpLink.create({
+          uri: environment.api.hasura,
+        })
+      ),
+      cache: new InMemoryCache(),
+    });
+  }
+}

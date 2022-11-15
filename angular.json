@@ -78,7 +78,8 @@
               "browserTarget": "food-service-ui:build:production"
             },
             "development": {
-              "browserTarget": "food-service-ui:build:development"
+              "browserTarget": "food-service-ui:build:development",
+              "proxyConfig": "proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
