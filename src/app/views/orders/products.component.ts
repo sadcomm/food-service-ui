@@ -4,11 +4,11 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
 })
-export class OrdersComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   constructor(private _apollo: Apollo) {}
 
   get apollo() {

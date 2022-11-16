@@ -12,15 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
-import { OrdersComponent } from './views/orders/orders.component';
+import { ProductsComponent } from './views/orders/products.component';
 
 import { Apollo, ApolloModule } from 'apollo-angular';
 import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { environment } from 'src/environments/environment';
-import {
-  HttpClientModule,
-} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 const stateFeatureKey = 'fsStore';
 
@@ -38,7 +36,7 @@ const MATERIAL = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent, OrdersComponent],
+  declarations: [AppComponent, ToolbarComponent, ProductsComponent],
   imports: [
     ...MATERIAL,
     BrowserModule,
