@@ -1,19 +1,29 @@
-
 version: '3.6'
 services:
+  food-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: food-service:v1.0.0
+    ports:
+      - "8002:5002"
+    networks:
+      - main
   postgres:
     image: postgres:12
     ports:
-    - "5432:5432"
+      - "5434:5432"
     restart: always
     environment:
       POSTGRES_PASSWORD: postgrespassword
+    networks:
+      - main
   graphql-engine:
     image: hasura/graphql-engine:v2.7.0
     ports:
-    - "8080:8080"
+      - "8080:8080"
     depends_on:
-    - "postgres"
+      - "postgres"
     restart: always
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
@@ -25,5 +35,10 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     command:
-    - graphql-engine
-    - serve
+      - graphql-engine
+      - serve
+    networks:
+      - main
+networks:
+  main:
+    driver: bridge

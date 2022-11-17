@@ -1,11 +1,13 @@
+import { environment as envProd } from './environment.prod';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  ...envProd,
   production: false,
   api: {
-    hasura: '/v1/graphql',
+    hasura: '/hasura/api/v1/graphql',
   },
 };
 
