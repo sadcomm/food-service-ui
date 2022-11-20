@@ -25,5 +25,3 @@ ENTRYPOINT [ "/bin/entrypoint.sh" ]
 CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 5002
-
-

@@ -1,12 +1,10 @@
 version: '3.6'
 services:
   food-service:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: food-service:v1.0.0
     ports:
-      - "8002:5002"
+      - "8082:5002"
     networks:
       - main
   postgres:
