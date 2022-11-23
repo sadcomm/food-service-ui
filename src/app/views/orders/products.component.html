@@ -1,6 +1,21 @@
 <fs-toolbar>
   <h1>Заказы3</h1>
 </fs-toolbar>
-<div class="sidenav-content">
-  <p>orders works!</p>
-</div>
+<p-table [value]="products">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>name</th>
+      <th>price</th>
+      <th>summary</th>
+      <th>description</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.summary }}</td>
+      <td>{{ product.description }}</td>
+    </tr>
+  </ng-template>
+</p-table>

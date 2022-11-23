@@ -82,6 +82,7 @@ import { Component } from '@angular/core';
             width: 100%;
             margin-top: 48px;
             height: calc(100vh - 48px);
+            padding: 12px;
             overflow-y: auto;
             & > .mdc-layout-grid {
               height: 100%;

@@ -19,6 +19,7 @@ import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
 
 const stateFeatureKey = 'fsStore';
 
@@ -39,12 +40,13 @@ const MATERIAL = [
   declarations: [AppComponent, ToolbarComponent, ProductsComponent],
   imports: [
     ...MATERIAL,
-    BrowserModule,
+    ApolloModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    ApolloModule,
     HttpClientModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
