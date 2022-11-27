@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsComponent } from './views/orders/products.component';
+import { OrdersModule } from './views/orders/orders.module';
+import { ProductsModule } from './views/products/products.module';
 
 export const routes: Routes = [
   {
     path: 'products',
-    component: ProductsComponent,
+    loadChildren: () => ProductsModule,
+  },
+  {
+    path: 'orders',
+    loadChildren: () => OrdersModule,
   },
   {
     path: '**',
