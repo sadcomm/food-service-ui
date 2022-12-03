@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QueryOptions } from '@apollo/client/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { Subject, takeUntil } from 'rxjs';
+import { ProductsStore } from './products-store/products-store';
 import { IProduct } from './products-store/types';
-import { productsStateFeatureKey } from './products.module';
 
 @Component({
   selector: 'app-products',
@@ -11,35 +9,22 @@ import { productsStateFeatureKey } from './products.module';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+  private readonly unsubscribe$ = new Subject<void>();
   public products: IProduct[] = [];
 
-  constructor(private _apollo: Apollo) {}
-
-  get apollo() {
-    return this._apollo.use(productsStateFeatureKey);
+  constructor(private _store: ProductsStore) {
+    this._store.loadProducts();
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      const qo: QueryOptions = {
-        query: gql`
-          query MyQuery {
-            product {
-              id
-              name
-              price
-              summary
-              discount
-              description
-            }
-          }
-        `,
-        fetchPolicy: 'no-cache',
-      };
-      this.apollo.query<{ product: IProduct[] }>(qo).subscribe(({ data }) => {
-        this.products = data.product;
-        console.log(this.products);
+    this.subOnProducts();
+  }
+
+  private subOnProducts(): void {
+    this._store.products$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((products) => {
+        this.products = products;
       });
-    }, 1000);
   }
 }

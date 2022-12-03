@@ -16,7 +16,6 @@ import { ApolloLink } from '@apollo/client/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './views/products/products.module';
 import { OrdersModule } from './views/orders/orders.module';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 const middlewareLink = new ApolloLink((op, forward) =>
   forward(op).map((response) => response)
@@ -32,7 +31,7 @@ const MATERIAL = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent],
+  declarations: [AppComponent],
   imports: [
     ...MATERIAL,
     AppRoutingModule,

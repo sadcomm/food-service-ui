@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { Apollo, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { TableModule } from 'primeng/table';
+import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { environment } from 'src/environments/environment';
+import { ProductsStore } from './products-store/products-store';
 import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products.routing';
 
@@ -16,9 +19,15 @@ const middlewareLink = new ApolloLink((op, forward) =>
 );
 
 @NgModule({
-  declarations: [ProductsComponent],
-  imports: [ApolloModule, MatToolbarModule, TableModule, ProductsRoutingModule],
-  providers: [],
+  declarations: [ProductsComponent, ToolbarComponent],
+  imports: [
+    ApolloModule,
+    MatToolbarModule,
+    TableModule,
+    ProductsRoutingModule,
+    MatSnackBarModule,
+  ],
+  providers: [ProductsStore],
 })
 export class ProductsModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {

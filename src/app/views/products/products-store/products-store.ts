@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ComponentStore } from '@ngrx/component-store';
-import { Subject } from 'rxjs';
+import { QueryOptions } from '@apollo/client/core';
+import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { Apollo } from 'apollo-angular';
+import { EMPTY, Observable, switchMap } from 'rxjs';
+import { IProduct } from './types';
+import gql from 'graphql-tag';
+import { productsStateFeatureKey } from '../products.module';
 
 interface IProductsState {
-  products: any[];
+  products: IProduct[];
 }
 
 const productsState: IProductsState = {
@@ -12,8 +17,10 @@ const productsState: IProductsState = {
 };
 
 @Injectable({ providedIn: 'root' })
-export class SearchStore extends ComponentStore<IProductsState> {
-  private readonly unsubscribe$ = new Subject<void>();
+export class ProductsStore extends ComponentStore<IProductsState> {
+  get apollo() {
+    return this._apollo.use(productsStateFeatureKey);
+  }
 
   public onSuccess = (message: string): void => {
     this._snack.open(message, undefined, { duration: 3000 });
@@ -30,14 +37,47 @@ export class SearchStore extends ComponentStore<IProductsState> {
 
   /* updaters */
 
-  public readonly setFilterState = this.updater((state, products: any[]) => ({
+  public readonly setProducts = this.updater((state, products: IProduct[]) => ({
     ...state,
     products: products,
   }));
 
-  constructor(private _snack: MatSnackBar) {
+  constructor(private _snack: MatSnackBar, private _apollo: Apollo) {
     super(productsState);
   }
+
+  public readonly loadProducts = this.effect((event$: Observable<void>) =>
+    event$.pipe(
+      switchMap(() => {
+        const qo: QueryOptions = {
+          query: gql`
+            query MyQuery {
+              product {
+                id
+                name
+                price
+                summary
+                discount
+                description
+              }
+            }
+          `,
+          fetchPolicy: 'no-cache',
+        };
+        return this.apollo.query<{ product: IProduct[] }>(qo).pipe(
+          tapResponse(
+            ({ data }) => {
+              return this.setProducts(data.product);
+            },
+            (error: { message: string }) => {
+              this.onError(error);
+              return EMPTY;
+            }
+          )
+        );
+      })
+    )
+  );
 
   // public readonly loadDocument = this.effect(
   //   (event$: Observable<{ doc: any; searchQuery: SearchValue }>) =>
