@@ -27,21 +27,17 @@ import { Component } from '@angular/core';
         </div>
       </mat-toolbar>
       <mat-nav-list class="sidenav-list bg-primary">
-        <mat-list-item>
-          <a routerLink="/products">
-            <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
-              <mat-icon>format_list_bulleted</mat-icon>
-              <span>Продукты</span>
-            </div>
-          </a>
+        <mat-list-item routerLink="/products">
+          <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
+            <mat-icon>format_list_bulleted</mat-icon>
+            <span>Продукты</span>
+          </div>
         </mat-list-item>
-        <mat-list-item>
-          <a routerLink="/orders">
-            <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
-              <mat-icon>format_list_bulleted</mat-icon>
-              <span>Заказы</span>
-            </div>
-          </a>
+        <mat-list-item routerLink="/orders">
+          <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
+            <mat-icon>format_list_bulleted</mat-icon>
+            <span>Заказы</span>
+          </div>
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>

@@ -6,7 +6,7 @@ import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { Apollo, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { TableModule } from 'primeng/table';
-import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
+import { ScToolbarModule } from 'src/app/components/toolbar/toolbar.module';
 import { environment } from 'src/environments/environment';
 import { ProductsStore } from './products-store/products-store';
 import { ProductsComponent } from './products.component';
@@ -19,13 +19,14 @@ const middlewareLink = new ApolloLink((op, forward) =>
 );
 
 @NgModule({
-  declarations: [ProductsComponent, ToolbarComponent],
+  declarations: [ProductsComponent],
   imports: [
     ApolloModule,
     MatToolbarModule,
     TableModule,
     ProductsRoutingModule,
     MatSnackBarModule,
+    ScToolbarModule,
   ],
   providers: [ProductsStore],
 })

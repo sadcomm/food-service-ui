@@ -3,10 +3,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { QueryOptions } from '@apollo/client/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Apollo } from 'apollo-angular';
-import { EMPTY, Observable, switchMap } from 'rxjs';
-import { IProduct } from './types';
 import gql from 'graphql-tag';
+import { EMPTY, Observable, switchMap } from 'rxjs';
 import { productsStateFeatureKey } from '../products.module';
+import { IProduct } from './types';
 
 interface IProductsState {
   products: IProduct[];
@@ -78,28 +78,4 @@ export class ProductsStore extends ComponentStore<IProductsState> {
       })
     )
   );
-
-  // public readonly loadDocument = this.effect(
-  //   (event$: Observable<{ doc: any; searchQuery: SearchValue }>) =>
-  //     event$.pipe(
-  //       switchMap(({ doc, searchQuery }) => {
-  //         const { id, index, detailsPath }: SearchResultItem = doc;
-  //         return this._http.get(detailsPath).pipe(
-  //           map((res) => {
-  //             this.sortClassifications(res, searchQuery);
-  //             return { id, index, detailsPath, source: res };
-  //           }),
-  //           tapResponse(
-  //             (result: any) => {
-  //               this.setCurrentDoc(result);
-  //             },
-  //             (error: { message: string }) => {
-  //               this.onError(error);
-  //               return EMPTY;
-  //             }
-  //           )
-  //         );
-  //       })
-  //     )
-  // );
 }
