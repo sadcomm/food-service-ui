@@ -11,3 +11,7 @@ body {
 .bg-primary {
   background: $color-primary;
 }
+
+.p-button:focus {
+  box-shadow: none !important;
+}

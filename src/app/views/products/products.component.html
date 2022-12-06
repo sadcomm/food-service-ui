@@ -6,16 +6,30 @@
     <tr>
       <th>name</th>
       <th>price</th>
+      <th>imgs</th>
+      <th>discount</th>
       <th>summary</th>
       <th>description</th>
+      <th style="width: 5rem"></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-product>
     <tr>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
+      <td>{{ product.imgs }}</td>
+      <td>{{ product.discount }}</td>
       <td>{{ product.summary }}</td>
       <td>{{ product.description }}</td>
+      <td>
+        <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-text p-button-danger"
+        ></button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { ProductsStore } from './products-store/products-store';
 import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products.routing';
+import { ButtonModule } from 'primeng/button';
 
 export const productsStateFeatureKey = 'productsStore';
 
@@ -23,6 +25,8 @@ const middlewareLink = new ApolloLink((op, forward) =>
   imports: [
     ApolloModule,
     MatToolbarModule,
+    MatIconModule,
+    ButtonModule,
     TableModule,
     ProductsRoutingModule,
     MatSnackBarModule,

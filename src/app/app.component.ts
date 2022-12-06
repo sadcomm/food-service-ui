@@ -35,7 +35,7 @@ import { Component } from '@angular/core';
         </mat-list-item>
         <mat-list-item routerLink="/orders">
           <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
-            <mat-icon>format_list_bulleted</mat-icon>
+            <mat-icon>grading</mat-icon>
             <span>Заказы</span>
           </div>
         </mat-list-item>

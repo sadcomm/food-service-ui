@@ -56,8 +56,9 @@ export class ProductsStore extends ComponentStore<IProductsState> {
                 id
                 name
                 price
-                summary
+                imgs
                 discount
+                summary
                 description
               }
             }
