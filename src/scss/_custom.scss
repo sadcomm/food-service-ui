@@ -12,6 +12,16 @@ body {
   background: $color-primary;
 }
 
-.p-button:focus {
-  box-shadow: none !important;
+.p-contextmenu {
+  margin-left: -269px;
+}
+
+.p-button {
+  &.p-button-icon-only {
+    width: 2.5rem !important;
+    padding: 0.5rem 0 !important;
+    &.p-button-rounded {
+      height: 2.5rem !important;
+    }
+  }
 }

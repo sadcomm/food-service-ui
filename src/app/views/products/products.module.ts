@@ -7,12 +7,15 @@ import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { Apollo, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { TableModule } from 'primeng/table';
+import { ContextMenuModule } from 'primeng/contextmenu';
 import { ScToolbarModule } from 'src/app/components/toolbar/toolbar.module';
 import { environment } from 'src/environments/environment';
 import { ProductsStore } from './products-store/products-store';
 import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products.routing';
 import { ButtonModule } from 'primeng/button';
+import { FlexModule } from '@angular/flex-layout';
+import { ProductsFormComponent } from './products-form/products-form.component';
 
 export const productsStateFeatureKey = 'productsStore';
 
@@ -21,7 +24,7 @@ const middlewareLink = new ApolloLink((op, forward) =>
 );
 
 @NgModule({
-  declarations: [ProductsComponent],
+  declarations: [ProductsComponent, ProductsFormComponent],
   imports: [
     ApolloModule,
     MatToolbarModule,
@@ -31,6 +34,8 @@ const middlewareLink = new ApolloLink((op, forward) =>
     ProductsRoutingModule,
     MatSnackBarModule,
     ScToolbarModule,
+    ContextMenuModule,
+    FlexModule,
   ],
   providers: [ProductsStore],
 })
