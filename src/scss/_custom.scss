@@ -24,4 +24,11 @@ body {
       height: 2.5rem !important;
     }
   }
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.fw {
+  width: 100%;
 }

@@ -6,13 +6,15 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { EMPTY, Observable, switchMap } from 'rxjs';
 import { productsStateFeatureKey } from '../products.module';
-import { IProduct } from './types';
+import { Product } from './products-types';
 
 interface IProductsState {
-  products: IProduct[];
+  product: Product;
+  products: Product[];
 }
 
 const productsState: IProductsState = {
+  product: new Product(),
   products: [],
 };
 
@@ -33,11 +35,17 @@ export class ProductsStore extends ComponentStore<IProductsState> {
 
   /* selectors */
 
+  public readonly product$ = this.select(({ product }) => product);
   public readonly products$ = this.select(({ products }) => products);
 
   /* updaters */
 
-  public readonly setProducts = this.updater((state, products: IProduct[]) => ({
+  public readonly setProduct = this.updater((state, product: Product) => ({
+    ...state,
+    product: new Product(product),
+  }));
+
+  public readonly setProducts = this.updater((state, products: Product[]) => ({
     ...state,
     products: products,
   }));
@@ -60,12 +68,13 @@ export class ProductsStore extends ComponentStore<IProductsState> {
                 discount
                 summary
                 description
+                category_id
               }
             }
           `,
           fetchPolicy: 'no-cache',
         };
-        return this.apollo.query<{ product: IProduct[] }>(qo).pipe(
+        return this.apollo.query<{ product: Product[] }>(qo).pipe(
           tapResponse(
             ({ data }) => {
               return this.setProducts(data.product);
@@ -78,5 +87,41 @@ export class ProductsStore extends ComponentStore<IProductsState> {
         );
       })
     )
+  );
+
+  public readonly loadProductById = this.effect(
+    (event$: Observable<{ id: number }>) =>
+      event$.pipe(
+        switchMap(({ id }) => {
+          const qo: QueryOptions = {
+            query: gql`
+              query MyQuery {
+                product_by_pk(id: ${id}) {
+                  id
+                  name
+                  price
+                  imgs
+                  discount
+                  summary
+                  description
+                  category_id
+                }
+              }
+            `,
+            fetchPolicy: 'no-cache',
+          };
+          return this.apollo.query<{ product_by_pk: Product }>(qo).pipe(
+            tapResponse(
+              ({ data }) => {
+                return this.setProduct(data.product_by_pk);
+              },
+              (error: { message: string }) => {
+                this.onError(error);
+                return EMPTY;
+              }
+            )
+          );
+        })
+      )
   );
 }

@@ -10,7 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { ApolloLink } from '@apollo/client/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +26,6 @@ const MATERIAL = [
   MatButtonModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatDividerModule,
 ];
 
 @NgModule({

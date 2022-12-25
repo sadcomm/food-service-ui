@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductsStore } from './products-store/products-store';
-import { IProduct } from './products-store/types';
+import { Product } from './products-store/products-types';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
-  private readonly unsubscribe$ = new Subject<void>();
+export class ProductsComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
 
-  public selectedProduct: IProduct | null = null;
-  public products: IProduct[] = [];
+  public selectedProduct: Product | null = null;
+
+  public products: Product[] = [];
+
   public items: MenuItem[] = [
     {
       label: 'Просмотр',
@@ -48,6 +50,11 @@ export class ProductsComponent implements OnInit {
     this.subOnProducts();
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   private subOnProducts(): void {
     this._store.products$
       .pipe(takeUntil(this.unsubscribe$))
@@ -56,7 +63,7 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  private viewProduct(product: IProduct | null): void {
+  private viewProduct(product: Product | null): void {
     if (product) {
       this._router.navigate(['./view', product.id], {
         relativeTo: this._activatedRoute,
@@ -64,7 +71,15 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  private editProduct(product: IProduct | null): void {}
+  private editProduct(product: Product | null): void {
+    if (product) {
+      this._router.navigate(['./edit', product.id], {
+        relativeTo: this._activatedRoute,
+      });
+    }
+  }
 
-  private deleteProduct(product: IProduct | null): void {}
+  private deleteProduct(product: Product | null): void {
+    console.log('🚀 ~ deleteProduct ~ product', product);
+  }
 }

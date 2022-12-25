@@ -1,1 +1,81 @@
-<p>products-form works!</p>
+<fs-toolbar>
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-arrow-left"
+    class="p-button-rounded p-button-secondary p-button-text"
+    title="Назад"
+    routerLink="../"
+  ></button>
+  <h1>Продукты</h1>
+</fs-toolbar>
+<form [formGroup]="productFg">
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>ID</mat-label>
+    <input matInput name="id" formControlName="id" [readonly]="readonlyFg" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>ID категории</mat-label>
+    <input
+      matInput
+      name="category_id"
+      formControlName="category_id"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Наименование</mat-label>
+    <input
+      matInput
+      name="name"
+      formControlName="name"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Цена</mat-label>
+    <input
+      matInput
+      name="price"
+      formControlName="price"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Скидка</mat-label>
+    <input
+      matInput
+      name="discount"
+      formControlName="discount"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Изображения</mat-label>
+    <input
+      matInput
+      name="imgs"
+      formControlName="imgs"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Сводка</mat-label>
+    <input
+      matInput
+      name="summary"
+      formControlName="summary"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fw">
+    <mat-label>Описание</mat-label>
+    <input
+      matInput
+      name="description"
+      formControlName="description"
+      [readonly]="readonlyFg"
+    />
+  </mat-form-field>
+</form>
