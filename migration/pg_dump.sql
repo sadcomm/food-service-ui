@@ -6,7 +6,7 @@ CREATE TABLE dic (
   id int NOT NULL DEFAULT NEXTVAL ('dic_seq'),
   name varchar(50) DEFAULT NULL,
   sign varchar(100) DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   PRIMARY KEY (id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE cls_order (
   comment varchar(100) DEFAULT NULL,
   type_pay int DEFAULT NULL,
   status_pay int DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 );
@@ -45,7 +45,7 @@ CREATE TABLE cls_order_x_product (
   cls_order_id int NOT NULL,
   product_id int NOT NULL,
   cnt int DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   PRIMARY KEY (cls_order_id,product_id)
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE product (
   imgs text DEFAULT NULL,
   summary varchar(100) DEFAULT NULL,
   description varchar(500) DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 )  ;
@@ -87,7 +87,7 @@ CREATE TABLE product_category (
   description varchar(100) DEFAULT NULL,
   thumb varchar(100) DEFAULT NULL,
   ord int DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 );
@@ -106,7 +106,7 @@ CREATE TABLE product_review (
   reg_user_id int NOT NULL,
   message varchar(1000) DEFAULT NULL,
   photos text DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 )  ;
@@ -128,7 +128,7 @@ CREATE TABLE term (
   val int DEFAULT NULL,
   val_str varchar(300) DEFAULT NULL,
   val_js text DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 )  ;
@@ -152,7 +152,7 @@ CREATE TABLE reg_user (
   login varchar(50) DEFAULT NULL,
   password varchar(50) DEFAULT NULL,
   telegram_uid varchar(50) DEFAULT NULL,
-  created_at timestamp(0) DEFAULT NULL,
+  created_at timestamp(0) DEFAULT now(),
   updated_at timestamp(0) DEFAULT NULL,
   PRIMARY KEY (id)
 )   ;
