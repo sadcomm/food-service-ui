@@ -6,5 +6,13 @@
     "pathRewrite": {
       "^/hasura/api/": "/"
     }
+  },
+  "/fileService/": {
+    "target": "http://45.153.231.101:8989",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/fileService/": "/"
+    }
   }
 }

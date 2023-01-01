@@ -30,13 +30,13 @@ import { Component } from '@angular/core';
         <mat-list-item routerLink="/products">
           <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
             <mat-icon>format_list_bulleted</mat-icon>
-            <span>Продукты</span>
+            <span>Products</span>
           </div>
         </mat-list-item>
         <mat-list-item routerLink="/orders">
           <div fxLayoutAlign="start center" fxLayoutGap="0.25em">
             <mat-icon>grading</mat-icon>
-            <span>Заказы</span>
+            <span>Orders</span>
           </div>
         </mat-list-item>
       </mat-nav-list>
@@ -100,8 +100,4 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class AppComponent {
-  public onRouterOutletActivate(event: any) {
-    console.log(event);
-  }
-}
+export class AppComponent {}

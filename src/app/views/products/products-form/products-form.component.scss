@@ -1,0 +1,37 @@
+:host {
+  p-fileupload {
+    ::ng-deep {
+      .p-fileupload {
+        .p-fileupload-content {
+          padding: 0;
+          .p-progressbar
+          // .p-fileupload-row > div:last-child
+          {
+            display: none;
+          }
+        }
+        .p-fileupload-buttonbar {
+          padding: 1rem !important;
+        }
+      }
+      .fs-button-bar-disabled {
+        .p-fileupload-content {
+          .p-fileupload-row > div:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .empty-files-message {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .submit-btn-container {
+    .submit-btn {
+      display: block;
+    }
+  }
+}

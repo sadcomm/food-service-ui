@@ -11,21 +11,21 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Наименование</th>
-        <th>Цена</th>
-        <th>Изображения</th>
-        <th>Скидка</th>
-        <th>Сводка</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Images</th>
+        <th>Discount</th>
+        <th>Summary</th>
         <th>
           <div fxLayout="row" fxLayoutAlign="space-between center">
-            <span>Описание</span>
+            <span>Description</span>
             <button
               pButton
               pRipple
               type="button"
               icon="pi pi-plus"
               class="p-button-rounded p-button-text"
-              title="Создать"
+              title="Create"
               routerLink="./new"
             ></button>
           </div>
@@ -34,21 +34,42 @@
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr [pContextMenuRow]="product">
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
         <td>
-          <button
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-eye"
-            class="p-button-rounded p-button-text"
-          ></button>
-          {{ product.imgs }}
+          <p-skeleton *ngIf="loading$ | async; else name"></p-skeleton>
+          <ng-template #name>{{ product.name }}</ng-template>
         </td>
-        <td>{{ product.discount }}</td>
-        <td>{{ product.summary }}</td>
-        <td>{{ product.description }}</td>
+        <td>
+          <p-skeleton *ngIf="loading$ | async; else price"> </p-skeleton>
+          <ng-template #price> {{ product.price }} ₽</ng-template>
+        </td>
+        <td>
+          <p-skeleton
+            shape="circle"
+            size="40px"
+            *ngIf="loading$ | async; else imgs"
+          ></p-skeleton>
+          <ng-template #imgs>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-eye"
+              class="p-button-rounded p-button-text"
+            ></button
+          ></ng-template>
+        </td>
+        <td>
+          <p-skeleton *ngIf="loading$ | async; else discount"> </p-skeleton>
+          <ng-template #discount> {{ product.discount }} ₽</ng-template>
+        </td>
+        <td>
+          <p-skeleton *ngIf="loading$ | async; else summary"> </p-skeleton>
+          <ng-template #summary> {{ product.summary }} </ng-template>
+        </td>
+        <td>
+          <p-skeleton *ngIf="loading$ | async; else description"> </p-skeleton>
+          <ng-template #description> {{ product.description }} </ng-template>
+        </td>
       </tr>
     </ng-template>
   </p-table>

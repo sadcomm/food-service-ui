@@ -8,15 +8,16 @@
     title="Назад"
     routerLink="../"
   ></button>
-  <h1>Продукты</h1>
+  <h1>Products</h1>
 </fs-toolbar>
-<form [formGroup]="productFg">
-  <mat-form-field appearance="fill" class="fw">
+<form [formGroup]="productFg" autocomplete="off">
+  <!-- <mat-form-field appearance="fill" class="fw">
     <mat-label>ID</mat-label>
     <input matInput name="id" formControlName="id" [readonly]="readonlyFg" />
-  </mat-form-field>
+  </mat-form-field> -->
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>ID категории</mat-label>
+    <mat-label>ID category</mat-label>
     <input
       matInput
       name="category_id"
@@ -24,8 +25,9 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>Наименование</mat-label>
+    <mat-label>Name</mat-label>
     <input
       matInput
       name="name"
@@ -33,8 +35,9 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>Цена</mat-label>
+    <mat-label>Price</mat-label>
     <input
       matInput
       name="price"
@@ -42,8 +45,9 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>Скидка</mat-label>
+    <mat-label>Discount</mat-label>
     <input
       matInput
       name="discount"
@@ -51,17 +55,9 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>Изображения</mat-label>
-    <input
-      matInput
-      name="imgs"
-      formControlName="imgs"
-      [readonly]="readonlyFg"
-    />
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="fw">
-    <mat-label>Сводка</mat-label>
+    <mat-label>Summary</mat-label>
     <input
       matInput
       name="summary"
@@ -69,8 +65,9 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
   <mat-form-field appearance="fill" class="fw">
-    <mat-label>Описание</mat-label>
+    <mat-label>Description</mat-label>
     <input
       matInput
       name="description"
@@ -78,4 +75,39 @@
       [readonly]="readonlyFg"
     />
   </mat-form-field>
+
+  <div class="pb-4">
+    <p-fileUpload
+      name="demo[]"
+      accept="image/*"
+      [styleClass]="readonlyFg ? 'fs-button-bar-disabled' : 'fs-button-bar'"
+      [multiple]="true"
+      [customUpload]="true"
+      [showUploadButton]="false"
+      [showCancelButton]="!readonlyFg"
+      [disabled]="readonlyFg"
+      [files]="uploadedFiles"
+      [maxFileSize]="1000000"
+      (onSelect)="onSelect($event)"
+      (onClear)="onClear()"
+      (onRemove)="onRemove($event)"
+    >
+      <ng-template pTemplate="content">
+        <div *ngIf="uploadedFiles.length === 0" class="empty-files-message">
+          No images selected
+        </div>
+      </ng-template>
+    </p-fileUpload>
+  </div>
 </form>
+<div *ngIf="!readonlyFg" class="fw submit-btn-container pb-4">
+  <p-button
+    align="end"
+    label="Save"
+    icon="pi pi-check"
+    iconPos="right"
+    class="submit-btn"
+    (onClick)="onSubmit()"
+    [disabled]="!isDirty()"
+  ></p-button>
+</div>

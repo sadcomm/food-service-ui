@@ -9,6 +9,7 @@ import { Product } from './products-store/products-types';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  providers: [ProductsStore],
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
@@ -17,14 +18,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   public products: Product[] = [];
 
+  public loading$ = this._store.loading$;
+
   public items: MenuItem[] = [
     {
-      label: 'Просмотр',
+      label: 'View',
       icon: 'pi pi-fw pi-search',
       command: () => this.viewProduct(this.selectedProduct),
     },
     {
-      label: 'Редактировать',
+      label: 'Edit',
       icon: 'pi pi-fw pi-pencil',
       command: () => this.editProduct(this.selectedProduct),
     },
@@ -32,7 +35,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       separator: true,
     },
     {
-      label: 'Удалить',
+      label: 'Delete',
       icon: 'pi pi-fw pi-times',
       command: () => this.deleteProduct(this.selectedProduct),
     },

@@ -3,7 +3,8 @@ body {
   height: 100%;
 }
 
-body {
+body,
+body .p-component {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -13,7 +14,11 @@ body {
 }
 
 .p-contextmenu {
-  margin-left: -269px;
+  margin-left: -269px !important;
+}
+
+.p-button-label {
+  font-weight: 500 !important;
 }
 
 .p-button {
