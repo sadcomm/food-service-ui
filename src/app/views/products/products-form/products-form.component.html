@@ -10,6 +10,11 @@
   ></button>
   <h1>Products</h1>
 </fs-toolbar>
+<mat-progress-bar
+  *ngIf="loading$ | async"
+  color="primary"
+  mode="indeterminate"
+></mat-progress-bar>
 <form [formGroup]="productFg" autocomplete="off">
   <!-- <mat-form-field appearance="fill" class="fw">
     <mat-label>ID</mat-label>

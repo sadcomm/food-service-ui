@@ -4,14 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MutationOptions, QueryOptions } from '@apollo/client/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Apollo } from 'apollo-angular';
-import {
-  debounceTime,
-  delay,
-  EMPTY,
-  forkJoin,
-  Observable,
-  switchMap,
-} from 'rxjs';
+import { EMPTY, forkJoin, Observable, switchMap } from 'rxjs';
 import { generateUpsertMutation } from 'src/app/utils/graphql-mutation.generator';
 import {
   generateQuery,
@@ -65,7 +58,7 @@ export class ProductsStore extends ComponentStore<IProductsState> {
     products: products,
   }));
 
-  readonly setLoading = this.updater((store, loading: boolean) => ({
+  public readonly setLoading = this.updater((store, loading: boolean) => ({
     ...store,
     loading,
   }));
@@ -100,9 +93,7 @@ export class ProductsStore extends ComponentStore<IProductsState> {
           tapResponse(
             ({ data }) => {
               this.setProducts(data.product);
-              setTimeout(() => {
-                this.setLoading(false);
-              }, 400);
+              this.setLoading(false);
             },
             (error: { message: string }) => {
               this.onError(error);
@@ -140,9 +131,6 @@ export class ProductsStore extends ComponentStore<IProductsState> {
             tapResponse(
               ({ data }) => {
                 this.setProduct(data.product_by_pk);
-                setTimeout(() => {
-                  this.setLoading(false);
-                }, 400);
               },
               (error: { message: string }) => {
                 this.onError(error);
@@ -228,11 +216,9 @@ export class ProductsStore extends ComponentStore<IProductsState> {
                   .mutate<{ insert_product: { returning: Product[] } }>(mo)
                   .pipe(
                     tapResponse(
-                      ({ data }) => {
+                      () => {
                         this.onSuccess('Продукт сохранен');
-                        setTimeout(() => {
-                          this.setLoading(false);
-                        }, 400);
+                        this.setLoading(false);
                       },
                       (error: { message: string }) => this.onError(error)
                     )

@@ -21,7 +21,7 @@ export class ProductsFormComponent implements OnInit {
 
   public uploadedFiles: File[] = [];
 
-  public loadedFile: any = null;
+  public loading$ = this._store.loading$;
 
   constructor(
     private _store: ProductsStore,
@@ -77,7 +77,10 @@ export class ProductsFormComponent implements OnInit {
               this.uploadedFiles = response.map((blob, idx) =>
                 this.blobToFile(blob, imgPaths[idx])
               );
+              this._store.setLoading(false);
             });
+        } else {
+          this._store.setLoading(false);
         }
       });
   }
@@ -102,7 +105,7 @@ export class ProductsFormComponent implements OnInit {
     this.uploadedFiles = [];
   }
 
-  public onSelect(event: any) {
+  public onSelect(event: any): void {
     this.productFg.markAsDirty();
     this.uploadedFiles = [...event.currentFiles];
   }

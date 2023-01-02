@@ -7,6 +7,7 @@ import { FlexModule } from '@angular/flex-layout';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { Apollo, ApolloModule } from 'apollo-angular';
@@ -48,6 +49,7 @@ const middlewareLink = new ApolloLink((op, forward) =>
     FileUploadModule,
     ReactiveFormsModule,
     SkeletonModule,
+    MatProgressBarModule,
   ],
   providers: [FormBuilder],
 })
