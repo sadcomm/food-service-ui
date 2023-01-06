@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, Subject, take, takeUntil } from 'rxjs';
-import { FORM_STATE } from '../products-store/products-schema';
-import { ProductsStore } from '../products-store/products-store';
-import { Product } from '../products-store/products-types';
+import {
+  FORM_STATE,
+  Product,
+} from '../../../api/products-store/products-schema';
+import { ProductsStore } from '../../../api/products-store/products-store';
 
 @Component({
   selector: 'app-products-form',

@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Subject, takeUntil } from 'rxjs';
-import { ProductsStore } from './products-store/products-store';
-import { Product } from './products-store/products-types';
+import { Product } from '../../api/products-store/products-schema';
+import { ProductsStore } from '../../api/products-store/products-store';
 
 @Component({
   selector: 'app-products',

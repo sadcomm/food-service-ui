@@ -11,14 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 
-import { ApolloLink } from '@apollo/client/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './views/products/products.module';
 import { OrdersModule } from './views/orders/orders.module';
-
-const middlewareLink = new ApolloLink((op, forward) =>
-  forward(op).map((response) => response)
-);
 
 const MATERIAL = [
   MatListModule,

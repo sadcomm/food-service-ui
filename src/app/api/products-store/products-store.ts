@@ -10,8 +10,8 @@ import {
   generateQuery,
   generateQueryById,
 } from 'src/app/utils/graphql-query-generator';
-import { productsStateFeatureKey } from '../products.module';
-import { Product } from './products-types';
+import { productsStateFeatureKey } from '../../views/products/products.module';
+import { Product } from './products-schema';
 
 interface IProductsState {
   product: Product;

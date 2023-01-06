@@ -1,3 +1,9 @@
+export enum FORM_STATE {
+  CREATE = 'Создание',
+  EDIT = 'Редактирование',
+  VIEW = 'Просмотр',
+}
+
 export class Nullable {
   static isNull(val: any): boolean {
     return !val;
